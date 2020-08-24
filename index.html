@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 
 <!-- Mirrored from soscar.netlify.app/index-demo-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2020 14:59:05 GMT -->
@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://js.stripe.com/v3"></script>
 
     <!-- Title -->
     <title>Soscar - Multipurpose Template</title>
@@ -441,7 +442,7 @@ Organizations are failing to deploy adequate cyber security tools and processes 
                     <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.2s">
                         <div class="price_table_text">
                             <h5>Small Business</h5>
-                            <h1>$1.5k</h1>
+                            <h1>$4k</h1>
                             <p>Always</p>
                         </div>
                         <div class="table_text_details">
@@ -452,7 +453,39 @@ Organizations are failing to deploy adequate cyber security tools and processes 
                             <p>24/7 Support</p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJMueK8o3FZEVdtNdMHGslv', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
                         </div>
                     </div>
                 </div>
@@ -461,26 +494,6 @@ Organizations are failing to deploy adequate cyber security tools and processes 
                     <div class="single_price_table_content active text-center wow fadeIn" data-wow-delay="0.3s">
                         <div class="price_table_text">
                             <h5>Entreprise</h5>
-                            <h1>$5K</h1>
-                            <p>Per Month</p>
-                        </div>
-                        <div class="table_text_details">
-                            <p>250GB Bandwidth</p>
-                            <p>08 Email Account</p>
-                            <p>Unlimited Database </p>
-                            <p>10GB Free Disk </p>
-                            <p>24/7 Support</p>
-                        </div>
-                        <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Table -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="price_table_text">
-                            <h5>Organization</h5>
                             <h1>$8K</h1>
                             <p>Per Month</p>
                         </div>
@@ -492,7 +505,91 @@ Organizations are failing to deploy adequate cyber security tools and processes 
                             <p>24/7 Support</p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJhxsK8o3FZEVdtGYoWK8vM', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="price_table_text">
+                            <h5>Organization</h5>
+                            <h1>$10K</h1>
+                            <p>Per Month</p>
+                        </div>
+                        <div class="table_text_details">
+                            <p>250GB Bandwidth</p>
+                            <p>08 Email Account</p>
+                            <p>Unlimited Database </p>
+                            <p>10GB Free Disk </p>
+                            <p>24/7 Support</p>
+                        </div>
+                        <div class="table_btn mt-50">
+                            <a id="checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJi0xK8o3FZEVdtjOq9ZMRl', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
                         </div>
                     </div>
                 </div>

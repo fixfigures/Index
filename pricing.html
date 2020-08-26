@@ -3,13 +3,12 @@
 
 
 
-<!-- Mirrored from soscar.netlify.app/pricing.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2020 14:58:47 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://js.stripe.com/v3"></script>
 
     <!-- Title -->
     <title>Pricing</title>
@@ -37,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-white fixed-top" id="banner">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand" href="#"><span><img src="img/core-img/logo.png" alt="logo"></span> Soscar</a>
+            <a class="navbar-brand" href="#"><span><img src="img/core-img/logo.png" alt="logo"></span>FixFigures</a>
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -48,14 +47,8 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Home</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="index-demo-1.html">Home style 1</a>
-                            <a class="dropdown-item" href="index-demo-2.html">Home style 2</a>
-                            <a class="dropdown-item" href="index-demo-3.html">Home style 3</a>
-                            <a class="dropdown-item" href="index-demo-4.html">Home style 4</a>
-                            <a class="dropdown-item" href="index-demo-5.html">Home style 5</a>
-                        </div>
+                        <a class="nav-link dropdown-toggle" href="index.html" id="navbardrop">Home</a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about-us.html">About Us</a>
@@ -69,10 +62,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="pricing.html">Pricing</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">Contact</a>
-                    </li>
-                    <li class="lh-55px"><a href="#" class="btn login-btn ml-50">Login!</a></li>
+                  
+                    <li class="lh-55px"><a href="contact-us.html" class="btn login-btn ml-50">Contact Us!</a></li>
                 </ul>
             </div>
         </div>
@@ -87,7 +78,7 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <nav aria-label="breadcrumb" class="breadcumb--con text-center">
-                            <h2 class="w-text title wow fadeInUp" data-wow-delay="0.2s">Pricing</h2>
+                            <h2 class="w-text title wow fadeInUp" data-wow-delay="0.2s">$ - €</h2>
                             <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.4s">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Pricing</li>
@@ -105,28 +96,60 @@
         
         <div class="container">
             <div class="section-heading text-center">
-                <div class="top-sec-h wow fadeInUp" data-wow-delay="0.2s">Pricing plans</div>
+                <div class="top-sec-h wow fadeInUp" data-wow-delay="0.2s">Subscriptions</div>
                 <h2 class="d-blue bold fadeInUp" data-wow-delay="0.3s">Our Pricing Plans</h2>
-                <p class="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                <p class="fadeInUp" data-wow-delay="0.4s"></p>
             </div>
             <div class="row no-gutters">
                 <!-- Single Table -->
                 <div class="col-lg-4 col-md-6">
                     <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.2s">
                         <div class="price_table_text">
-                            <h5>Begginer</h5>
-                            <h1>Free</h1>
+                            <h5>Small Business</h5>
+                            <h1>$4k</h1>
                             <p>Always</p>
                         </div>
                         <div class="table_text_details">
-                            <p>250GB Bandwidth</p>
-                            <p>08 Email Account</p>
-                            <p>Unlimited Database </p>
-                            <p>10GB Free Disk </p>
-                            <p>24/7 Support</p>
+                            <p>Web Application</p>
+                            <p>Penetration Testing</p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJMueK8o3FZEVdtNdMHGslv', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
                         </div>
                     </div>
                 </div>
@@ -134,19 +157,51 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_price_table_content active text-center wow fadeIn" data-wow-delay="0.3s">
                         <div class="price_table_text">
-                            <h5>Business</h5>
-                            <h1>$24.99</h1>
+                            <h5>Entreprise</h5>
+                            <h1>$8K</h1>
                             <p>Per Month</p>
                         </div>
                         <div class="table_text_details">
-                            <p>250GB Bandwidth</p>
-                            <p>08 Email Account</p>
-                            <p>Unlimited Database </p>
-                            <p>10GB Free Disk </p>
-                            <p>24/7 Support</p>
+                            <p>Web Application </p>
+                            <p>Network Penetration </p>
+                            <p>Cloud Penetration  </p>
+                            <p>3rd Party Penetration </p>
+                            <p></p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJhxsK8o3FZEVdtGYoWK8vM', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
                         </div>
                     </div>
                 </div>
@@ -154,19 +209,52 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.4s">
                         <div class="price_table_text">
-                            <h5>professional</h5>
-                            <h1>$84.99</h1>
+                            <h5>Organization</h5>
+                            <h1>$10K</h1>
                             <p>Per Month</p>
                         </div>
                         <div class="table_text_details">
-                            <p>250GB Bandwidth</p>
-                            <p>08 Email Account</p>
-                            <p>Unlimited Database </p>
-                            <p>10GB Free Disk </p>
-                            <p>24/7 Support</p>
+                            <p>Web Application </p>
+                            <p>Network Penetration </p>
+                            <p>Cloud Penetration  </p>
+                            <p>PCI Penetration  </p>
+                            <p>Social Engineering</p>
+                            <p>3rd Party Penetration</p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a href="#" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl" role="link" type="button" class="btn info-btn">Start</a>
+                            <div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1HJi0xK8o3FZEVdtjOq9ZMRl', quantity: 1}],
+      mode: 'subscription',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://fixfigures.com/success',
+      cancelUrl: 'https://fixfigures.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
                         </div>
                     </div>
                 </div>
@@ -183,7 +271,7 @@
             <div class="section-heading text-center">
                 <div class="top-sec-h wow fadeInUp" data-wow-delay="0.2s">Working Steps</div>
                 <h2 class="wow fadeInUp d-blue bold" data-wow-delay="0.3s" >How it works</h2>
-                <p class="wow fadeInUp" data-wow-delay="0.4s" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                <p class="wow fadeInUp" data-wow-delay="0.4s" ></p>
             </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
@@ -194,7 +282,7 @@
                             <img src="img/icons/h1.png" class="colored-icon" alt="">
                         </div>
                         <h6>Add Your Security Problem</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
@@ -205,7 +293,7 @@
                             <img src="img/icons/h2.png" class="colored-icon" alt="">
                         </div>
                         <h6>Choose Security Package</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
@@ -216,7 +304,7 @@
                             <img src="img/icons/h3.png" class="colored-icon" alt="">
                         </div>
                         <h6>Prepare for Security Test</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam</p>
+                        <p></p>
                     </div>
                 </div>
                 
@@ -233,7 +321,7 @@
                     <div class="section-heading text-center">
                         <div class="top-sec-h wow fadeInUp" data-wow-delay="0.2s">Our Testimonials</div>
                         <h2 class="d-blue bold bl-text wow fadeInUp" data-wow-delay="0.3s">Loved By Our Clients</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s"></p>
                     </div>
                 </div>
             </div>
@@ -252,13 +340,13 @@
                             <!-- Testimonial Feedback Text -->
                             <div class="testimonial-description">
                                 <div class="testimonial_text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis magni, quisquam, accusantium dolores atque, doloribus odit minus maiores sunt mollitia consequatur, soluta quasi.</p>
+                                    <p>We have used FixFigures for the past several months and have always been pleased with their services, insights and our overall results. Our enterprise customers expect to receive and review regular independent penetration tests/audits detailing the integrity of our solutions and stack and the deliverables from FixFigures have met these expectations every time.</p>
                                 </div>
 
                                 <!-- Admin Text -->
                                 <div class="admin_text">
-                                    <h5>Sunny Khan</h5>
-                                    <p>Head of Design, Company CEO</p>
+                                    <h5>Robert Baker</h5>
+                                    <p>Company CEO</p>
                                 </div>
                             </div>
                         </div>
@@ -272,13 +360,13 @@
                             <!-- Testimonial Feedback Text  -->
                             <div class="testimonial-description">
                                 <div class="testimonial_text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error nostrum adipisci porro quisquam. Rem, earum, tenetur? Architecto et, earum repudiandae.</p>
+                                    <p>The contribution of human hackers in BreachLock’s algorithm cannot be overstated. Their expertise contributes to faster and more comprehensive automated scans and tests that, in turn, keep organiza- tions a step ahead of hackers from the other side. The mixture of artificial intelligence, the cloud and human hacking allows FixFigures to move beyond traditional vulnerability management ap- proaches.</p>
                                 </div>
 
                                 <!-- Admin Text -->
                                 <div class="admin_text">
-                                    <h5>Ajoy Das</h5>
-                                    <p>Head of Idea, Company CEO</p>
+                                    <h5>Keith Worts</h5>
+                                    <p>Company CEO</p>
                                 </div>
                             </div>
                         </div>
@@ -292,12 +380,12 @@
                             <!-- Testimonial Feedback Text  -->
                             <div class="testimonial-description">
                                 <div class="testimonial_text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et delectus, nam repudiandae repellat id placeat molestias consequuntur, laudantium dolorem nesciunt sit.</p>
+                                    <p>The company enables the clients to request and consume a comprehensive penetration test with a few clicks. It has a unique approach that aligns the industry’s best practices that utilise manual as well as automated vulnerability discovery methods.</p>
                                 </div>
                                 <!-- Admin Text -->
                                 <div class="admin_text">
                                     <h5>Jebin Khan</h5>
-                                    <p>Head of Marketing, Company CEO</p>
+                                    <p>Head of Marketing</p>
                                 </div>
                             </div>
                         </div>
@@ -317,9 +405,9 @@
                             <!-- Copywrite -->
                             <div class="copywrite_text fadeInUp" data-wow-delay="0.2s">
                                 <div class="footer-logo">
-                                    <a href="#"><img src="img/core-img/logo.png" alt="logo"> Soscar </a>
+                                    <a href="#"><img src="img/core-img/logo.png" alt="logo"> FixFigures </a>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit ducimus voluptatibus neque illo id repellat quisquam? Autem expedita earum quae laborum ipsum ad.</p>
+                                <p>HACK YOURSELF BEFORE SOMEONE ELSE DOES.</p>
                             </div>
                             <!-- Social Icon -->
                             <div class="footer-social-info fadeInUp" data-wow-delay="0.4s">
@@ -349,14 +437,7 @@
                     <div class="col-12 col-lg-2 col-md-6 ">
                         <!-- Content Info -->
                         <div class="contact_info_area d-sm-flex justify-content-between">
-                            <div class="contact_info mt-s text-center fadeInUp" data-wow-delay="0.2s">
-                                <h5>NAVIGATE</h5>
-                                <a href="#"><p>Advertisers</p></a>
-                                <a href="#"><p>Developers</p></a>
-                                <a href="#"><p>Resources</p></a>
-                                <a href="#"><p>Company</p></a>
-                                <a href="#"><p>Connect</p></a>
-                            </div>
+                         
                         </div>
                     </div>
                     
@@ -366,10 +447,10 @@
                             <!-- Content Info -->
                             <div class="contact_info mt-s text-center fadeInUp" data-wow-delay="0.4s">
                                 <h5>CONTACT US</h5>
-                                <p>Mailing Address:xx00 E. Union Ave</p>
-                                <p>Suite 1100. Denver, CO 80237</p>
-                                <p>+999 90932 627</p>
-                                <p>support@yourdomain.com</p>
+                                <p>Mailing Address: 1950 W Corporate Way</p>
+                                <p>Unit #31013,Anaheim, CA 92801</p>
+                                <p>+1-380-203-2618</p>
+                                <p>Support@FixFigures.com</p>
                             </div>
                         </div>
                     </div>
@@ -397,5 +478,4 @@
 
 
 
-<!-- Mirrored from soscar.netlify.app/pricing.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2020 14:58:47 GMT -->
 </html>

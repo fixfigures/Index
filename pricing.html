@@ -117,39 +117,47 @@
                             <p></p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a id="checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv" role="link" type="button" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HKkZHGYflmu826yRrq6FrvN" role="link" type="button" class="btn info-btn">Start</a>
                             <div id="error-message"></div>
 
-<script>
-(function() {
-  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
+                            <script>
+                                (function() {
+                                  var stripe = Stripe('pk_live_51HCQOPGYflmu826y65PkhzhezgTC71VO5CQnXnQ8CBGfG144BmgWmPr0GkrC2NTV5EkCGhQWav6zjAlOMTxNMPLb00wCOIXcJw');
+                                
+                                  var checkoutButton = document.getElementById('checkout-button-price_1HKkZHGYflmu826yRrq6FrvN');
+                                  checkoutButton.addEventListener('click', function () {
+                                    // When the customer clicks on the button, redirect
+                                    // them to Checkout.
+                                    stripe.redirectToCheckout({
+                                      lineItems: [{price: 'price_1HKkZHGYflmu826yRrq6FrvN', quantity: 1}],
+                                      mode: 'subscription',
+                                      // Do not rely on the redirect to the successUrl for fulfilling
+                                      // purchases, customers may not always reach the success_url after
+                                      // a successful payment.
+                                      // Instead use one of the strategies described in
+                                      // https://stripe.com/docs/payments/checkout/fulfillment
+                                      successUrl: window.location.protocol + '//FixFigures.com/success',
+                                      cancelUrl: window.location.protocol + '//FixFigures.com/canceled',
+                                    })
+                                    .then(function (result) {
+                                      if (result.error) {
+                                        // If `redirectToCheckout` fails due to a browser or network
+                                        // error, display the localized error message to your customer.
+                                        var displayError = document.getElementById('error-message');
+                                        displayError.textContent = result.error.message;
+                                      }
+                                    });
+                                  });
+                                })();
+                                </script>
+                                
+                                Copy
+                                
+                                
 
-  var checkoutButton = document.getElementById('checkout-button-price_1HJMueK8o3FZEVdtNdMHGslv');
-  checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1HJMueK8o3FZEVdtNdMHGslv', quantity: 1}],
-      mode: 'subscription',
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://fixfigures.com/success',
-      cancelUrl: 'https://fixfigures.com/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
+Copy
+
+
                         </div>
                     </div>
                 </div>
@@ -169,39 +177,39 @@
                             <p></p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a id="checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM" role="link" type="button" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HKkvtGYflmu826ywqPnTtut" role="link" type="button" class="btn info-btn">Start</a>
                             <div id="error-message"></div>
 
-<script>
-(function() {
-  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
-
-  var checkoutButton = document.getElementById('checkout-button-price_1HJhxsK8o3FZEVdtGYoWK8vM');
-  checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1HJhxsK8o3FZEVdtGYoWK8vM', quantity: 1}],
-      mode: 'subscription',
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://fixfigures.com/success',
-      cancelUrl: 'https://fixfigures.com/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
+                            <script>
+                                (function() {
+                                  var stripe = Stripe('pk_live_51HCQOPGYflmu826y65PkhzhezgTC71VO5CQnXnQ8CBGfG144BmgWmPr0GkrC2NTV5EkCGhQWav6zjAlOMTxNMPLb00wCOIXcJw');
+                                
+                                  var checkoutButton = document.getElementById('checkout-button-price_1HKkvtGYflmu826ywqPnTtut');
+                                  checkoutButton.addEventListener('click', function () {
+                                    // When the customer clicks on the button, redirect
+                                    // them to Checkout.
+                                    stripe.redirectToCheckout({
+                                      lineItems: [{price: 'price_1HKkvtGYflmu826ywqPnTtut', quantity: 1}],
+                                      mode: 'subscription',
+                                      // Do not rely on the redirect to the successUrl for fulfilling
+                                      // purchases, customers may not always reach the success_url after
+                                      // a successful payment.
+                                      // Instead use one of the strategies described in
+                                      // https://stripe.com/docs/payments/checkout/fulfillment
+                                      successUrl: window.location.protocol + '//FixFigures.com/success',
+                                      cancelUrl: window.location.protocol + '//FixFigures.com/canceled',
+                                    })
+                                    .then(function (result) {
+                                      if (result.error) {
+                                        // If `redirectToCheckout` fails due to a browser or network
+                                        // error, display the localized error message to your customer.
+                                        var displayError = document.getElementById('error-message');
+                                        displayError.textContent = result.error.message;
+                                      }
+                                    });
+                                  });
+                                })();
+                                </script>
                         </div>
                     </div>
                 </div>
@@ -222,39 +230,39 @@
                             <p>3rd Party Penetration</p>
                         </div>
                         <div class="table_btn mt-50">
-                            <a id="checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl" role="link" type="button" class="btn info-btn">Start</a>
+                            <a id="checkout-button-price_1HKkwHGYflmu826yAAab4S1x" role="link" type="button" class="btn info-btn">Start</a>
                             <div id="error-message"></div>
 
-<script>
-(function() {
-  var stripe = Stripe('pk_live_AniMpizYW9ykxmR6592hquTv00oPAmkmW6');
-
-  var checkoutButton = document.getElementById('checkout-button-price_1HJi0xK8o3FZEVdtjOq9ZMRl');
-  checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1HJi0xK8o3FZEVdtjOq9ZMRl', quantity: 1}],
-      mode: 'subscription',
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://fixfigures.com/success',
-      cancelUrl: 'https://fixfigures.com/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
+                            <script>
+                                (function() {
+                                  var stripe = Stripe('pk_live_51HCQOPGYflmu826y65PkhzhezgTC71VO5CQnXnQ8CBGfG144BmgWmPr0GkrC2NTV5EkCGhQWav6zjAlOMTxNMPLb00wCOIXcJw');
+                                
+                                  var checkoutButton = document.getElementById('checkout-button-price_1HKkwHGYflmu826yAAab4S1x');
+                                  checkoutButton.addEventListener('click', function () {
+                                    // When the customer clicks on the button, redirect
+                                    // them to Checkout.
+                                    stripe.redirectToCheckout({
+                                      lineItems: [{price: 'price_1HKkwHGYflmu826yAAab4S1x', quantity: 1}],
+                                      mode: 'subscription',
+                                      // Do not rely on the redirect to the successUrl for fulfilling
+                                      // purchases, customers may not always reach the success_url after
+                                      // a successful payment.
+                                      // Instead use one of the strategies described in
+                                      // https://stripe.com/docs/payments/checkout/fulfillment
+                                      successUrl: window.location.protocol + '//FixFigures.com/success',
+                                      cancelUrl: window.location.protocol + '//FixFigures.com/canceled',
+                                    })
+                                    .then(function (result) {
+                                      if (result.error) {
+                                        // If `redirectToCheckout` fails due to a browser or network
+                                        // error, display the localized error message to your customer.
+                                        var displayError = document.getElementById('error-message');
+                                        displayError.textContent = result.error.message;
+                                      }
+                                    });
+                                  });
+                                })();
+                                </script>
                         </div>
                     </div>
                 </div>
